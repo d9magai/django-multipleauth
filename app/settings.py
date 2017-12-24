@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'multipleauth',
     'app',
+    'user',
+    'owner',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +123,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Specifying authentication backends
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'user.backends.UserAuthBackend',
+    'owner.backends.OwnerAuthBackend',
+]
 
 SESSION_COOKIE_NAME = 'user_sessionid'
 
