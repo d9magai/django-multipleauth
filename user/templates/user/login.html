@@ -1,0 +1,22 @@
+{% extends 'user/base.html' %} 
+{% block content %} 
+<form method='post' action='{% url 'user:login' %}'>
+{% csrf_token %}
+{% for error in form.non_field_errors %}
+    <p>{{ error }}</p>
+{% endfor %}
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+ 
+<input type='submit' value='login' />
+<input type='hidden' name='next' value='{{ next }}' />
+</form>
+{% endblock %}
